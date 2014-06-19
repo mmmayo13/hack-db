@@ -12,7 +12,7 @@ Screencast introduction:
 
 Java
 
-## Compile & Excecute
+## Compile & Execute
 
 ```
 javac hackdb/*.java
