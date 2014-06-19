@@ -4,7 +4,6 @@ package hackdb;
  * @Filename:       Database.java
  * @Author:         Matthew Mayo
  * @Modified:       2014-06-18
- * @Description:    
  */
 
 
