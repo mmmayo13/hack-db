@@ -1,9 +1,10 @@
 package hackdb;
 
 /**
- * @Filename:       Database.java
- * @Author:         Matthew Mayo
- * @Modified:       2014-06-18
+ * @filename:       Database.java
+ * @version:        0.2
+ * @author:         Matthew Mayo
+ * @modified:       2014-06-22
  */
 
 
@@ -19,32 +20,65 @@ class Database {
     private String dbName = "";
     private ConcurrentHashMap<String, String> map = new ConcurrentHashMap();
 
-    public Database(String name) { dbName = name; }
+    public Database(String name) { 
+        dbName = name; 
+    }
 
-    @Override public String toString() { return dbName; }
+    @Override
+    public String toString() { 
+        return dbName; 
+    }
 
-    protected void add(String key, String value) { map.put(key, value); }
+    protected void setName(String name) { 
+        dbName = name; 
+    } 
 
-    protected void del(String key) { map.remove(key); }
+    protected void add(String key, String value) { 
+        map.put(key, value); 
+    }
 
-    protected String get(String key) { return map.get(key); }
+    protected void del(String key) { 
+        map.remove(key); 
+    }
 
-    protected int count() { return map.size(); }
+    protected String get(String key) { 
+        return map.get(key); 
+    }
 
-    protected void purge() { map.clear(); }
+    protected int count() { 
+        return map.size(); 
+    }
 
-    protected void sort() { System.out.println(new TreeMap(map)); }    
+    protected void purge() { 
+        map.clear(); 
+    }
 
-    protected void showAll() {
+    protected void sort() { 
         TreeMap sorted = new TreeMap(map);
         Iterator<String> keySetIterator = sorted.keySet().iterator();
         while(keySetIterator.hasNext()) {
             String key = keySetIterator.next();
             System.out.println(key + ", " + sorted.get(key));
         }
+    }   
+
+    protected void showAll() {
+        Iterator<String> keySetIterator = map.keySet().iterator();
+        while(keySetIterator.hasNext()) {
+            String key = keySetIterator.next();
+            System.out.println(key + ", " + map.get(key));
+        }
     }
 
     protected void showKeys() {
+        Iterator<String> keySetIterator = map.keySet().iterator();
+        while(keySetIterator.hasNext()) {
+            String key = keySetIterator.next();
+            System.out.println(key);
+        }
+    }
+
+    protected void showKeysSorted() {
         TreeMap sorted = new TreeMap(map);
         Iterator<String> keySetIterator = sorted.keySet().iterator();
         while(keySetIterator.hasNext()) {
@@ -53,13 +87,25 @@ class Database {
         }
     }
 
+    protected void showVals() {
+        Iterator<String> keySetIterator = map.keySet().iterator();
+        while(keySetIterator.hasNext()) {
+            String key = keySetIterator.next();
+            System.out.println(map.get(key));
+        }
+    }
+
     protected String minKey() {
-        if (map.size() > 0) { return (new TreeMap(map)).firstEntry().toString(); }
+        if (map.size() > 0) { 
+            return (new TreeMap(map)).firstEntry().toString(); 
+        }
         return null;
     }
 
     protected String maxKey() {
-        if (map.size() > 0) { return (new TreeMap(map)).lastEntry().toString(); }
+        if (map.size() > 0) { 
+            return (new TreeMap(map)).lastEntry().toString(); 
+        }
         return null;
     }
 
@@ -78,7 +124,9 @@ class Database {
             out.close();
             System.out.println("Data saved to " + filename);
         }
-        catch (Exception e) { System.out.println("Error saving"); }
+        catch (Exception e) { 
+            System.out.println("Error saving"); 
+        }
     }
 
     protected void load(String filename) {
@@ -91,6 +139,8 @@ class Database {
             map.putAll(temp2);
             map.putAll(temp1);
         }
-        catch (Exception e) { System.out.println("Error loading"); }
+        catch (Exception e) { 
+            System.out.println("Error loading"); 
+        }
     }
 }
