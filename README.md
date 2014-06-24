@@ -46,7 +46,7 @@ A: Under no circumstances. Obviously.
 
 A: See above.
 
-**Q: As an API on the way?**
+**Q: Is an API on the way?**
 
 A: An API is *not* on the way.
 
